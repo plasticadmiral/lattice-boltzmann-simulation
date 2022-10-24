@@ -18,7 +18,7 @@ max_decomp_processes=21
 timesteps=10000
 velocity_snapshot_steps=1000
 omega=1.6
-lid_vel=0.1kk
+lid_vel=0.1
 
 echo "lid_vel	omega	decomp	grid_size	timesteps	SECONDS	mlups"
 
