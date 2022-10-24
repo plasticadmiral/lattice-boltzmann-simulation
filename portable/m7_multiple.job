@@ -1,0 +1,42 @@
+#!/bin/bash
+#SBATCH --nodes=10
+#SBATCH --ntasks-per-node=40
+#SBATCH --time=02:00:00
+#SBATCH --job-name=hpc_plot_600
+#SBATCH --mem=6gb
+#SBATCH --export=all
+#SBATCH --partition=multiple
+#SBATCH --output=data/results_plot_600.out
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=rtharinarayan@gmail.com
+
+module load devel/python/3.8.6_gnu_10.2
+module load mpi/openmpi/4.1
+
+start_decomp=19
+max_decomp_processes=21
+timesteps=10000
+velocity_snapshot_steps=1000
+omega=1.6
+lid_vel=0.1kk
+
+echo "lid_vel	omega	decomp	grid_size	timesteps	SECONDS	mlups"
+
+for grid_size in {600..600..100};
+do
+	for((decomp=start_decomp;decomp<=$max_decomp_processes;decomp++));
+	do
+		if [ $(($grid_size % $decomp)) -eq 0 ];
+		then
+			SECONDS=0
+			mpirun -n $(($decomp**2)) python milestone7.py $timesteps \
+				$velocity_snapshot_steps $grid_size $grid_size $omega $lid_vel \
+				$decomp $decomp
+			mlups=$(($(($grid_size**2)) * $timesteps / $SECONDS))
+			echo "$lid_vel	$omega	$decomp	$grid_size	$timesteps	$SECONDS	$mlups"
+		fi
+	done
+done
+
+
+

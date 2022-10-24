@@ -1,0 +1,27 @@
+lid_vel	omega	decomp	grid_size	timesteps	SECONDS	mlups
+0.1	1.6	1	600	10000	1325	2716981
+0.1	1.6	2	600	10000	290	12413793
+0.1	1.6	3	600	10000	153	23529411
+0.1	1.6	4	600	10000	93	38709677
+0.1	1.6	5	600	10000	79	45569620
+0.1	1.6	6	600	10000	67	53731343
+0.1	1.6	8	600	10000	46	78260869
+0.1	1.6	10	600	10000	35	102857142
+0.1	1.6	12	600	10000	25	144000000
+0.1	1.6	15	600	10000	19	189473684
+0.1	1.6	20	600	10000	17	211764705
+
+============================= JOB FEEDBACK =============================
+
+NodeName=uc2n[201-204,209-214]
+Job ID: 21010873
+Cluster: uc2
+User/Group: fr_hr148/fr_fr
+State: COMPLETED (exit code 0)
+Nodes: 10
+Cores per node: 80
+CPU Utilized: 06:36:42
+CPU Efficiency: 1.37% of 20-02:53:20 core-walltime
+Job Wall-clock time: 00:36:13
+Memory Utilized: 6.62 GB
+Memory Efficiency: 11.04% of 60.00 GB
